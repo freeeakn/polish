@@ -1,0 +1,16 @@
+CC=gcc
+CFLAGS=-Wall -Werror -Wextra
+
+all: main.o general.o
+	$(CC) -o out $(CFLAGS) main.o general.o
+	rm *.o
+
+main.o:
+	$(CC) -c $(CFLAGS) main.c
+
+general.o:
+	$(CC) -c $(CFLAGS) general.c
+
+clean:
+	rm out
+	
