@@ -6,25 +6,36 @@ char *init(){
     return (char*)malloc(sizeof(char));
 }
 
-char *input() {
-    int index = 0;
-    char *buff = (char*) malloc(sizeof(char));
+void mem_free(void *allocstr) {
+    if (allocstr == NULL) {
+        printf("\nMemory Freed");   
+    } else {
+        free(allocstr);
+        allocstr = NULL;
+    }
+}
+
+int input(char *buff) {
+    int index = 0, temp = 1;
     char sym = getchar();
     while (sym != '\n') {
         buff[(index)++] = sym;
-        buff = (char*) realloc(buff, (index + 1) * sizeof(char));
+        if(index >= temp) {
+            temp *= 2;
+            buff = (char*) realloc(buff, temp * sizeof(char));
+        }
         sym = getchar();
     }
     buff[index] = '\0';
-    return buff;
+    return index;
 }
 
 void print(char *string) {
     int count = 0;
     while (string[count] != '\0') {
-        printf("%c", string[count]);
+        putchar(string[count]);
         count++;
     }
-    free(string);
-    string = NULL;
+    // free(string);
+    // string = NULL;
 }

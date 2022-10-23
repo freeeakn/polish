@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 
-all: main.o general.o
-	$(CC) -o out $(CFLAGS) main.o general.o
+all: main.o general.o stack.o
+	$(CC) -o out $(CFLAGS) main.o general.o stack.o
 	rm *.o
 
 main.o:
@@ -10,6 +10,9 @@ main.o:
 
 general.o:
 	$(CC) -c $(CFLAGS) general.c
+
+stack.o:
+	$(CC) -c $(CFLAGS) stack.c
 
 clean:
 	rm out
