@@ -1,7 +1,7 @@
 #include "./general.h"
 
 int main() {
-    char *str = (char*)malloc(sizeof(char));
+    char *str = init();
     str = input();
     print(str);
     return 0;

@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char *init(){
+    return (char*)malloc(sizeof(char));
+}
+
 char *input() {
     int index = 0;
     char *buff = (char*) malloc(sizeof(char));
@@ -17,8 +21,8 @@ char *input() {
 
 void print(char *string) {
     int count = 0;
-    while (buff[count] != '\0') {
-        printf("%c", buff[count]);
+    while (string[count] != '\0') {
+        printf("%c", string[count]);
         count++;
     }
     free(string);
